@@ -35,9 +35,16 @@ $spin-duration: 1.6s;
 
 body {
   position: relative;
-  &:after {
+  &:after,
+  &:before {
+    opacity: 1;
+    visibility: visible;
     position: absolute;
     content: '';
+    transition: all 0.5s;
+    transition-delay: 1.2s;
+  }
+  &:after {
     background: #fff;
     left: 0;
     top: 0;
@@ -46,14 +53,12 @@ body {
     z-index: 5;
   }
   &:before {
-    content: '';
     border-radius: 50%;
     width: $base-line-height;
     height: $base-line-height;
     border: .25rem solid $off-color;
     border-top-color: $color;
     animation: spin $spin-duration infinite linear;
-    position: absolute;
     left: 50%;
     top: 50%;
     margin: ($base-line-height / -2) 0 0 ($base-line-height / -2);
@@ -62,7 +67,8 @@ body {
   &.loaded {
     &:after,
     &:before {
-      display: none;
+      opacity: 0;
+      visibility: hidden;
     }
   }
 }
@@ -94,28 +100,31 @@ body {
     z-index: 2;
   }
 }
+
+$scale: 1.2;
+
 .row {
   position: relative;
   width: 100%;
   // border: 1px solid #000;
   background-size: cover;
   background-position: 50% 50%;
-  transition: opacity 0.3s, transform 0.3s;
+  transition: all 0.3s;
   opacity: 0.7;
   &:hover {
-    border: 5px solid #fff;
     opacity: 1;
-    transform: scale(1.5);
+    transform: scale($scale);
     z-index: 3;
+    box-shadow:0 0 10px 2px rgba(0,0,0,0.5);
   }
 }
 
 .col:last-child .row:hover {
-  transform: translateX(-25%) scale(1.5);
+  transform: translateX(-10%) scale($scale);
 }
 
 .col:first-child .row:hover {
-  transform: translateX(25%) scale(1.5);
+  transform: translateX(10%) scale($scale);
 }
 
 .col:hover {
@@ -152,11 +161,9 @@ body {
 }
 
 .col:nth-child(even) {
-  .rows1 {
-    margin-top: 20%;
-  }
+  .rows1,
   .rows2 {
-    margin-top: 20%;
+    animation-delay: 0.4s;
   }
 }
 

@@ -6,7 +6,8 @@
       countRows: 5, //rows
       countCols: 5, // cols
       imagesFromFolder: true,
-      imagesCount: 25 //images
+      imagesCount: 25, //images
+      random: false
     }, options);
 
     return this.each(function () {
@@ -34,23 +35,49 @@
         } 
         
         var col = el.find(".col").css("width", 100/settings.countCols + "%");
-        
+        var notFromFolder = (imagesLength != 0 && settings.imagesFromFolder == false);
+        var urlImage;
+        var a1 = 0;
+        var a2 = 1;
         col.each(function(){
+          
           var rows = $(this).find(".rows");
           
           for(var k = 0; k < settings.countRows; k++){
-            if (imagesLength != 0 && settings.imagesFromFolder == false) {
-              var urlImage = "url(" + images[Math.floor((Math.random() * imagesLength) + 1)].src +")";
+
+            if (notFromFolder) {
+              
+              if(settings.random){
+                var urlImage = "url(" + images[Math.floor((Math.random() * imagesLength) + 1)].src +")";
+              } else {
+                urlImage = "url(" + images[a1].src +")";
+                a1++;
+                if(a1 > imagesLength){
+                  a1 = 0;
+                }
+              }
+
             } else {
-              var urlImage = "url(jpg/" + Math.floor((Math.random() * settings.imagesCount) + 1) + ".jpg)";
-            };
+
+              if(settings.random){
+                var urlImage = "url(jpg/" + Math.floor((Math.random() * settings.imagesCount) + 1) + ".jpg)";
+              } else {
+                urlImage = "url(jpg/" + a2 + ".jpg)";
+                a2++;
+                if(a2 > settings.imagesCount){
+                  a2 = 1;
+                }
+              }
+
+            }
+
             $('<div class="row"></div>').css({
              backgroundImage: urlImage,
              backgroundColor: "hsl(" + Math.floor((Math.random() * 300) + 1) + ",100%,50%)",
              height: 100/settings.countRows + "%"
            }).appendTo(rows);
           }
-
+          
           rows.clone().appendTo($(this)).addClass("rows2");
           rows.addClass("rows1");
         });
@@ -67,9 +94,14 @@
             overlay.remove();
           });
         });
+
       };
 
       animated();
+      
+      $(document).keyup(function(e) {
+        if (e.keyCode === 27) $(".close").click();  // esc
+      });
 
     });
   }

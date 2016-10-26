@@ -44,12 +44,14 @@
       $('#example1').animateColumns({
         countRows: 5,
         countCols: 5,
-        imagesFromFolder: true
+        imagesFromFolder: false,
+        imagesCount: 2,
+        random: true
       });
       $('#example2').animateColumns({
-        countRows: 4,
-        countCols: 3,
-        imagesFromFolder: true
+        countRows: 11,
+        countCols: 2,
+        imagesFromFolder: false
       });
 
       $("body").waitForImages({

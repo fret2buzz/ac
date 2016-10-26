@@ -43,9 +43,18 @@ body {
 body {
 	position: relative;
 }
-body:after {
+body:after,
+body:before {
+	opacity: 1;
+	visibility: visible;
 	position: absolute;
 	content: '';
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+	-webkit-transition-delay: 1.2s;
+	transition-delay: 1.2s;
+}
+body:after {
 	background: #fff;
 	left: 0;
 	top: 0;
@@ -54,7 +63,6 @@ body:after {
 	z-index: 5;
 }
 body:before {
-	content: '';
 	border-radius: 50%;
 	width: 50px;
 	height: 50px;
@@ -62,7 +70,6 @@ body:before {
 	border-top-color: black;
 	-webkit-animation: spin 1.6s infinite linear;
 	animation: spin 1.6s infinite linear;
-	position: absolute;
 	left: 50%;
 	top: 50%;
 	margin: -25px 0 0 -25px;
@@ -70,7 +77,8 @@ body:before {
 }
 body.loaded:after,
 body.loaded:before {
-	display: none;
+	opacity: 0;
+	visibility: hidden;
 }
 
 .columns-container {
@@ -112,28 +120,26 @@ body.loaded:before {
 	width: 100%;
 	background-size: cover;
 	background-position: 50% 50%;
-	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
-	transition: opacity 0.3s, -webkit-transform 0.3s;
-	transition: opacity 0.3s, transform 0.3s;
-	transition: opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
 	opacity: 0.7;
 }
 .row:hover {
-	border: 5px solid #fff;
 	opacity: 1;
-	-webkit-transform: scale(1.5);
-	transform: scale(1.5);
+	-webkit-transform: scale(1.2);
+	transform: scale(1.2);
 	z-index: 3;
+	box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5);
 }
 
 .col:last-child .row:hover {
-	-webkit-transform: translateX(-25%) scale(1.5);
-	transform: translateX(-25%) scale(1.5);
+	-webkit-transform: translateX(-10%) scale(1.2);
+	transform: translateX(-10%) scale(1.2);
 }
 
 .col:first-child .row:hover {
-	-webkit-transform: translateX(25%) scale(1.5);
-	transform: translateX(25%) scale(1.5);
+	-webkit-transform: translateX(10%) scale(1.2);
+	transform: translateX(10%) scale(1.2);
 }
 
 .col:hover {
@@ -163,12 +169,10 @@ body.loaded:before {
 	top: 0;
 }
 
-.col:nth-child(even) .rows1 {
-	margin-top: 20%;
-}
-
+.col:nth-child(even) .rows1,
 .col:nth-child(even) .rows2 {
-	margin-top: 20%;
+	-webkit-animation-delay: 0.4s;
+	animation-delay: 0.4s;
 }
 
 @-webkit-keyframes slide1 {
