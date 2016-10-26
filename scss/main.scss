@@ -1,0 +1,164 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.columns {
+  // font-size: 0;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: stretch;
+  height: 100%;
+  overflow: hidden;
+}
+
+.col {
+  height: 100%;
+  position: relative;
+}
+
+.rows {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  // border: 1px solid #c33;
+  &:hover {
+    z-index: 2;
+  }
+}
+.row {
+  position: relative;
+  width: 100%;
+  // border: 1px solid #000;
+  background-size: cover;
+  background-position: 50% 50%;
+  transition: all 0.3s;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+    transform: scale(1.5);
+    z-index: 3;
+    background-color: #ccc;
+  }
+}
+
+.col:last-child .row:hover {
+  transform: translateX(-25%) scale(1.5);
+}
+
+.col:first-child .row:hover {
+  transform: translateX(25%) scale(1.5);
+}
+
+.col:hover {
+  z-index: 1;
+  .rows {
+    animation-play-state: paused;
+  }
+}
+
+.stop .col {
+  .rows {
+    animation-play-state: paused;
+  }
+}
+
+.col:nth-child(even) {
+  .rows1,
+  .rows2 {
+    animation-delay: 1s;
+  }
+}
+
+.rows1 {
+  animation: slide1 25s linear infinite;
+  left: 0;
+  top: 0;
+  // border: 1px solid #c33;
+  // .row {
+  //   opacity: 0;
+  // }
+}
+
+.rows2 {
+  animation: slide2 25s linear infinite;
+  left: 0;
+  top: 0;
+  // border: 1px solid #369;
+  // .row {
+  //   opacity: 0;
+  // }
+}
+
+@keyframes slide1 {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes slide2 {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.button {
+  padding: 10px;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+}
+
+.refresh {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 100;
+  // opacity: 0;
+  // visibility: hidden;
+  // transform: scale(0.8);
+  // transition: all 0.5s;
+  // &.visible {
+  //   opacity: 1;
+  //   visibility: visible;
+  //   transform: scale(1);
+  // }
+}
