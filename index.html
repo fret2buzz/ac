@@ -8,6 +8,19 @@
   <script type="text/javascript" src="js/ac.js"></script>
 </head>
 <body>
-  <div id="acExample"></div>
+  <div id="example1" class="columns-container" style="float: left; width: 50%;"></div>
+  <div id="example2" class="columns-container" style="float: left; width: 50%;"></div>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#example1').ac({
+        countRows: 5,
+        countCols: 5
+      });
+      $('#example2').ac({
+        countRows: 2,
+        countCols: 3
+      });
+    });
+  </script>
 </body>
 </html>

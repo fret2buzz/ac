@@ -11,7 +11,7 @@ var csscomb = require('gulp-csscomb');
 // -----------------------------------------------------------------------------
 // Configuration
 // -----------------------------------------------------------------------------
-var localPath = 'F:/Temp/d3/ac.github.io/'
+var localPath = 'F:/Temp/d3/'
 var input = localPath + 'scss/**/*.scss';
 var output = localPath + '/css';
 

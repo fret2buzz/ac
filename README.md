@@ -1,2 +1,2 @@
-# ac.github.io
+# ac
 Animated columns of images
