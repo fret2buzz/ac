@@ -1,10 +1,12 @@
 (function ($) {
   $.fn.ac = function (options) {
+    
     // Establish our default settings
     var settings = $.extend({
       countRows: 5, //rows
       countCols: 5 //cols
     }, options);
+
     return this.each(function () {
       var el = $(this);
 
@@ -15,8 +17,6 @@
         $('<div class="columns"></div>').appendTo(el);
         
         var columns = el.find(".columns");
-        
-        columns.parent();
 
         columns.click(function(){
           $(this).toggleClass("stop");
@@ -52,6 +52,7 @@
           close.add(overlay).click(function(){
             // event.stopPropagation();
             // overlay.removeClass("visible");
+            columns.toggleClass("stop");
             overlay.remove();
           });
         });
@@ -59,8 +60,7 @@
 
       animated();
       var refresh = el.find(".refresh");
-      refresh.click(function(event){
-        event.stopPropagation();
+      refresh.click(function(){
         animated();
       });
     });

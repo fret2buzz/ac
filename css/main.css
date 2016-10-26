@@ -163,7 +163,7 @@ body {
 
 .refresh {
 	position: absolute;
-	z-index: 1000;
+	z-index: 99;
 	left: 0;
 	top: 0;
 }
