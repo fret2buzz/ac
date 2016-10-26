@@ -5,22 +5,46 @@
   <title>AC - Animated Columns</title>
   <link rel="stylesheet" href="css/main.css" />
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.waitforimages/1.5.0/jquery.waitforimages.min.js"></script>
   <script type="text/javascript" src="js/ac.js"></script>
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
+
   <div id="example1" class="columns-container" style="float: left; width: 50%;"></div>
   <div id="example2" class="columns-container" style="float: left; width: 50%;"></div>
+<!--   <img src="http://local.dev:8080/d3/jpg/1.jpg" alt="">
+  <img src="http://local.dev:8080/d3/jpg/2.jpg" alt="">
+  <img src="http://local.dev:8080/d3/jpg/3.jpg" alt="">
+  <img src="http://local.dev:8080/d3/jpg/4.jpg" alt="">
+  <img src="http://local.dev:8080/d3/jpg/5.jpg" alt="">
+  <img src="http://local.dev:8080/d3/jpg/6.jpg" alt="">
+  <img src="http://local.dev:8080/d3/jpg/7.jpg" alt=""> -->
+
   <script type="text/javascript">
+    
     $(document).ready(function(){
       $('#example1').ac({
         countRows: 5,
-        countCols: 5
+        countCols: 5,
+        imagesCount: 874
       });
       $('#example2').ac({
-        countRows: 2,
-        countCols: 3
+        countRows: 4,
+        countCols: 3,
+        imagesCount: 874
       });
+
+      $('body').waitForImages({
+        finished: function() {
+          $(this).addClass("loaded");
+        },
+        each: function() {
+          // ...
+        },
+        waitForAll: true
+      });
+
     });
   </script>
 </body>

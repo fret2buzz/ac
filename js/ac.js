@@ -1,19 +1,16 @@
 (function ($) {
+  
   $.fn.ac = function (options) {
-    
     // Establish our default settings
     var settings = $.extend({
       countRows: 5, //rows
-      countCols: 5 //cols
+      countCols: 5, // cols
+      imagesCount: 25 //images
     }, options);
 
     return this.each(function () {
       var el = $(this);
-      
-      $('<button class="refresh button" type="button">Refresh</button>').prependTo(el);
-      
-      var refresh = el.find(".refresh");
-      
+
       var animated = function(){
         
         el.find($(".columns")).remove();
@@ -26,7 +23,7 @@
           $(this).toggleClass("stop");
         });
 
-        for(let i = 0; i < settings.countCols; i++){
+        for(var i = 0; i < settings.countCols; i++){
          $('<div class="col"><div class="rows"></div></div>').prependTo(columns);
         } 
         
@@ -35,9 +32,9 @@
         col.each(function(){
           var rows = $(this).find(".rows");
           
-          for(let i = 0; i < settings.countRows; i++){
+          for(var k = 0; k < settings.countRows; k++){
            $('<div class="row"></div>').css({
-             backgroundImage: "url(jpg/" + Math.floor((Math.random() * 874) + 1) + ".jpg)",
+             backgroundImage: "url(jpg/" + Math.floor((Math.random() * settings.imagesCount) + 1) + ".jpg)",
              backgroundColor: "hsl(" + Math.floor((Math.random() * 300) + 1) + ",100%,50%)",
              height: 100/settings.countRows + "%"
            }).appendTo(rows);
@@ -61,10 +58,6 @@
       };
 
       animated();
-      
-      refresh.click(function(){
-        animated();
-      });
 
     });
   }
