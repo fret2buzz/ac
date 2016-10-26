@@ -9,11 +9,15 @@
 
     return this.each(function () {
       var el = $(this);
-
+      
+      $('<button class="refresh button" type="button">Refresh</button>').prependTo(el);
+      
+      var refresh = el.find(".refresh");
+      
       var animated = function(){
         
         el.find($(".columns")).remove();
-        
+
         $('<div class="columns"></div>').appendTo(el);
         
         var columns = el.find(".columns");
@@ -21,8 +25,6 @@
         columns.click(function(){
           $(this).toggleClass("stop");
         });
-
-        $('<button class="refresh button" type="button">Refresh</button>').prependTo(el);
 
         for(let i = 0; i < settings.countCols; i++){
          $('<div class="col"><div class="rows"></div></div>').prependTo(columns);
@@ -59,10 +61,11 @@
       };
 
       animated();
-      var refresh = el.find(".refresh");
+      
       refresh.click(function(){
         animated();
       });
+
     });
   }
 }(jQuery));

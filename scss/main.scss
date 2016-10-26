@@ -6,6 +6,12 @@
   margin: 0;
 }
 
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
 html,
 body {
   height: 100%;
