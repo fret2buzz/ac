@@ -39,7 +39,22 @@ gulp.task('prod', function () {
 });
 
 // -----------------------------------------------------------------------------
+// Watchers
+// -----------------------------------------------------------------------------
+gulp.task('watch', function() {
+	return gulp
+	// Watch the input folder for change,
+	// and run refresh task when something happens
+	.watch(input, ['prod'])
+	// When there is a change,
+	// log a message in the console
+	.on('change', function(event) {
+		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+	});
+});
+
+// -----------------------------------------------------------------------------
 // Default task
 // -----------------------------------------------------------------------------
-gulp.task('default', ['prod']);
+gulp.task('default', ['watch']);
 

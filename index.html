@@ -11,31 +11,48 @@
 </head>
 <body>
 
-  <div id="example1" class="columns-container" style="float: left; width: 50%;"></div>
-  <div id="example2" class="columns-container" style="float: left; width: 50%;"></div>
-<!--   <img src="http://local.dev:8080/d3/jpg/1.jpg" alt="">
-  <img src="http://local.dev:8080/d3/jpg/2.jpg" alt="">
-  <img src="http://local.dev:8080/d3/jpg/3.jpg" alt="">
-  <img src="http://local.dev:8080/d3/jpg/4.jpg" alt="">
-  <img src="http://local.dev:8080/d3/jpg/5.jpg" alt="">
-  <img src="http://local.dev:8080/d3/jpg/6.jpg" alt="">
-  <img src="http://local.dev:8080/d3/jpg/7.jpg" alt=""> -->
+  <div id="example1" class="columns-container" style="float: left; width: 50%;">
+    <!-- Images from unsplash.com -->
+    <img src="http://i.imgur.com/5B7PD9U.jpg" alt="">
+    <img src="http://i.imgur.com/9jGYIRo.jpg" alt="">
+    <img src="http://i.imgur.com/uch19Cu.jpg" alt="">
+    <img src="http://i.imgur.com/sbnMNtj.jpg" alt="">
+    <img src="http://i.imgur.com/sLbK19W.jpg" alt="">
+    <img src="http://i.imgur.com/HAVOyOu.jpg" alt="">
+    <img src="http://i.imgur.com/r9cAVgG.jpg" alt="">
+    <img src="http://i.imgur.com/prYPdK4.jpg" alt="">
+    <img src="http://i.imgur.com/xU13VSs.jpg" alt="">
+    <img src="http://i.imgur.com/Xg8h6XU.jpg" alt="">
+  </div>
+  <div id="example2" class="columns-container" style="float: left; width: 50%;">
+    <!-- Images from unsplash.com -->
+    <img src="http://i.imgur.com/5B7PD9U.jpg" alt="">
+    <img src="http://i.imgur.com/9jGYIRo.jpg" alt="">
+    <img src="http://i.imgur.com/uch19Cu.jpg" alt="">
+    <img src="http://i.imgur.com/sbnMNtj.jpg" alt="">
+    <img src="http://i.imgur.com/sLbK19W.jpg" alt="">
+    <img src="http://i.imgur.com/HAVOyOu.jpg" alt="">
+    <img src="http://i.imgur.com/r9cAVgG.jpg" alt="">
+    <img src="http://i.imgur.com/prYPdK4.jpg" alt="">
+    <img src="http://i.imgur.com/xU13VSs.jpg" alt="">
+    <img src="http://i.imgur.com/Xg8h6XU.jpg" alt="">
+  </div>
 
   <script type="text/javascript">
     
     $(document).ready(function(){
-      $('#example1').ac({
+      $('#example1').animateColumns({
         countRows: 5,
         countCols: 5,
-        imagesCount: 874
+        imagesFromFolder: false
       });
-      $('#example2').ac({
+      $('#example2').animateColumns({
         countRows: 4,
         countCols: 3,
-        imagesCount: 874
+        imagesFromFolder: false
       });
 
-      $('body').waitForImages({
+      $("body").waitForImages({
         finished: function() {
           $(this).addClass("loaded");
         },
