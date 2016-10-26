@@ -164,11 +164,11 @@ body.loaded:before {
 }
 
 .col:nth-child(even) .rows1 {
-	margin-top: -20%;
+	margin-top: 20%;
 }
 
 .col:nth-child(even) .rows2 {
-	margin-top: -20%;
+	margin-top: 20%;
 }
 
 @-webkit-keyframes slide1 {
