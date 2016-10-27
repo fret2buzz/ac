@@ -48,7 +48,7 @@
             if (notFromFolder) {
               
               if(settings.random){
-                var urlImage = "url(" + images[Math.floor((Math.random() * imagesLength) + 1)].src +")";
+                urlImage = "url(" + images[Math.floor((Math.random() * imagesLength) + 1)].src +")";
               } else {
                 urlImage = "url(" + images[a1].src +")";
                 a1++;
@@ -60,7 +60,7 @@
             } else {
 
               if(settings.random){
-                var urlImage = "url(jpg/" + Math.floor((Math.random() * settings.imagesCount) + 1) + ".jpg)";
+                urlImage = "url(jpg/" + Math.floor((Math.random() * settings.imagesCount) + 1) + ".jpg)";
               } else {
                 urlImage = "url(jpg/" + a2 + ".jpg)";
                 a2++;
